@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing Api</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+        <h1>Image Processing Api ....</h1>
+           
+    <form action="/api" method="GET"  >
+        <div>
+            <label for="select-image-extintion">Select extension</label>
+        <select name="ex" id="select-image-extintion" >
+            <option disabled>Extension</option>
+            <option value="jpeg" name="jpeg">JPEG</option>
+            <option value="png" name="png">PNG</option>
+            <option value="gif" name="gif">GIF</option>
+            
+        </select>
+        </div>
+        <div>
+            <label for="select-image-name">Select Image...</label>
+        <select name="imageName" id="select-image-name">
+            <option disabled>Images</option>
+            <option value="1"  name="1">encenadaport</option>
+            <option value="2" name="2">fjord</option>
+            <option value="3" name="3">icelandwaterfall</option>
+            <option value="4" name="4">palmtunnel</option>
+            <option value="5" name="5">santamonica</option>
+        </select>
+        </div>
+        <div>
+        <label for="select-image-width">Select Width..</label>
+        <input id="select-image-width" type="number" name="width" min="20" max="999" placeholder="Width" value="300">
+        </div> 
+        <div>
+        <label for="select-image-height">Select Height..</label>
+        <input id="select-image-height" type="number" name="height" min="20" max="999" placeholder="Height" value="200">
+        </div>
+        
+        <input type="submit" value="Show">
+    </form>
+    <footer style="font-size: larger;background-color: rgb(141, 141, 141); color: rgb(3, 3, 5);display: flex;justify-content: center; align-items: center ;width: 100%;height: 50px;">Developed by <b style="color: #e91e63;"> Abdalla Yahia Kamel</b>   <span style="color: blue;"> Udacity 2022</span> <sup>&copy;</sup> </footer>
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+module.exports = {
+  env: {
+    browser: true,
+    commonjs: true,
+    es2021: true,
+    node: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'prettier',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 13,
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint', 'prettier'],
+  rules: {
+    semi: 0,
+    quotes: 0,
+    'prettier/prettier': 0,
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
+    singleQuote: 0,
+    parser: 0,
+    usePrettierrc: 0,
+    'no-console': 0,
+    'no-var': 0,
+    'no-undef': 0,
+    'prefer-const': 0,
+    'no-unused-vars': 0,
+    '@typescript-eslint/no-var-requires': 0,
+    // 'require-yield': 0,
+  },
+}
