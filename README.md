@@ -3,44 +3,44 @@
 ## Contents :-
 
 - [dist]
-        -[images](#1.jpg#)
-                 (#2.jpg#)
-                 (#3.jpg#)
-                 (#4.jpg#)
-                 (#5.jpg#)
-            -[newfold]('The output folder contains the converted image')
-         -[public](index.html && style.css)
-         -[tests]
-             -[helpers]
-          (#app.js#)      
-          (#index.js#)      
-          (#creatimage.js#)      
-          (#showimage.js#)
-- [node_modules]
-- [spec]
-         -[helpers]
-              -[jasmine_examples]
-         -[support]
-           (#jasmine.json#)
+-[images](#1.jpg#)
+                 [](#2.jpg#)
+                 [](#3.jpg#)
+                 [](#4.jpg#)
+                 [](#5.jpg#)
+-[newfold]('The output folder contains the converted image')
+-[public](index.html)[](style.css)
+-[tests]
+-[helpers]
+          [](#app.js#)      
+          [](#index.js#)      
+          [](#creatimage.js#)      
+          [](#showimage.js#)
+-[node_modules]
+-[spec]
+-[helpers]
+-[jasmine_examples]
+-[support]
+           [](#jasmine.json#)
 - [src]
-         -[tests]
-              -[helpers]
-    -(#app.ts#)
-    -(#creatimage.ts#)
-    -(#index.ts#)
-    -(#showimage.ts#)
+-[tests]
+-[helpers]
+-[](#app.ts#)
+-[](#creatimage.ts#)
+-[](#index.ts#)
+-[](#showimage.ts#)
 
--eslintrc.js
+-[](eslintrc.js)
 
--prettierignore
--prettierrc.json
+-[](prettierignore)
+-[](prettierrc.json)
 
--package-lock.json
--package.json
+-[](package-lock.json)
+-[](package.json)
 
--tsconfig.json
+-[](tsconfig.json)
 
--READMEE.md
+-[](READMEE.md)
 
 ## Description
 
@@ -56,11 +56,11 @@
 6) - Finally, click on the show button to see the image in the size and extension you chose.
 
 ## How it work
---to run the server                        (npm run start  )
---to run test                              (npm run jasmine)
---to build the javascript files            (npm run build  )
---to run build js-fils && run server       (npm run start: )
---to run build js-fils && run jasmine test ( npm run test  )
+- to run the server                         [][npm run start  ]
+- to run test                               [][npm run jasmine]
+- to build the javascript files             [][npm run build  ]
+- to run build js-fils && run server        [][npm run start: ]
+- to run build js-fils && run jasmine test  [][npm run test   ]
 
 
 ## Built with
@@ -69,4 +69,4 @@
 
 ### Date
 
-- [Sun Aug 14 2022]
+- [][Sun Aug 14 2022]
