@@ -13,10 +13,13 @@ router_app.use('/api', async (req: Request, res: Response,nxt) => {
   let im = req.query.imageName as string
 
   //check if image exists in output folder
-  if (fs.existsSync(`images/newfold/${im}-${wd}-${hg}.${ex}`)) {
-   let pth = path.join(__dirname,`../images/newfold/${im}-${wd}-${hg}.${ex}`) as string
-    //Return  the image to show it 
-  await res.status(200).sendFile(pth) 
+  if (fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`)) {
+    let pth = path.join(
+      __dirname,
+      `../src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`
+    ) as string
+    //Return  the image to show it
+    await res.status(200).sendFile(pth)
   }  
   nxt()
 })

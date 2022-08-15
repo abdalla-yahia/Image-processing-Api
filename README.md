@@ -3,31 +3,31 @@
 ## Contents :-
 
 - [dist]
-- ------[Css]
-----------------(style.css)
-- ------[images]
-- --------------(#1.jpg#)
-- --------------(#2.jpg#)
-- --------------(#3.jpg#)
-- --------------(#4.jpg#)
-- --------------(#5.jpg#)
-- --------------[newfold]('The output folder contains the converted image')
-- -------[Js]
+
 - -------[tests]
 - -------[helpers]
-- -------(#app.js#)      
-- -------(#index.js#)      
-- -------(#creatimage.js#)      
-- -------(#showimage.js#)
----------(index.html)
+- -------(app.js)      
+- -------(index.js)      
+- -------(creatimage.js)      
+- -------(showimage.js)
+
 - [node_modules]
 - [spec]
 - -------[helpers]
 - --------------[jasmine_examples]
 - --------------[support]
-- -------------------(#jasmine.json#)
+- -------------------(jasmine.json)
            
 - [src]
+- ------[Css]
+----------------(style.css)
+- ------[images]
+- --------------(1.jpg)
+- --------------(2.jpg)
+- --------------(3.jpg)
+- --------------(4.jpg)
+- --------------(5.jpg)
+- --------------[newfold]('The output folder contains the converted image')
 - -------[tests]
 - -------------[helpers]
 - -(app.ts)
@@ -39,6 +39,8 @@
 
 - -(prettierignore)
 - -(prettierrc.json)
+
+- -(index.html)
 
 - -(package-lock.json)
 - -(package.json)

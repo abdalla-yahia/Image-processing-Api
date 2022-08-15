@@ -15,13 +15,13 @@ describe('Check the image info ', () => {
       const wd = 300
       const hg = 200
       const im = '1'
-      sharp(`dist/images/${im}.jpg`)
+      sharp(`src/images/${im}.jpg`)
         [`${ex}`]()
         .resize(Number(wd), Number(hg))
-        .toFile(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`)
-      return `dist/images/newfold/${im}-${wd}-${hg}.${ex}`
+        .toFile(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`)
+      return `src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`
     }
-    expect(TS()).toEqual('dist/images/newfold/1-300-200.jpeg')
+    expect(TS()).toEqual('src/images/OutputFolder/1-300-200.jpeg')
   })
 
 
@@ -31,10 +31,10 @@ describe('Check the image info ', () => {
       const wd = 300
       const hg = 200
       const im = '1'
-      fs.existsSync(`/images/newfold/${im}-${wd}-${hg}.${ex}`)
-      return `dist/images/newfold/${im}-${wd}-${hg}.${ex}`
+      fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`)
+      return `src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`
     }
-    expect(TS()).toEqual('dist/images/newfold/1-300-200.jpeg')
+    expect(TS()).toEqual('src/images/OutputFolder/1-300-200.jpeg')
   })
 
 
@@ -42,10 +42,10 @@ describe('Check the image info ', () => {
     const TS = () => {
       const ex = 'jpg'
       const im = '1'
-      fs.existsSync(`/images/newfold/${im}.${ex}`)
-      return `dist/images/newfold/${im}.${ex}`
+      fs.existsSync(`src/images/OutputFolder/${im}.${ex}`)
+      return `src/images/OutputFolder/${im}.${ex}`
     }
-    expect(TS()).toEqual('dist/images/newfold/1.jpg')
+    expect(TS()).toEqual('src/images/OutputFolder/1.jpg')
   })
 })
 
@@ -58,6 +58,8 @@ describe('Check All endpoints ', function () {
         
   })
     
+
+  
   it('gets the "/api" endpoint', async () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const response = await request.get('/api', (req, res) => {
@@ -66,12 +68,11 @@ describe('Check All endpoints ', function () {
       let hg = req.query.height as string
       let im = req.query.imageName as string
 
-      if (
-        fs.existsSync(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`)
-      )
-        expect(response.status).toBe(200);
+      if (fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`))
+        expect(response.status).toBe(200)
         
     })
   })
+
 
 })

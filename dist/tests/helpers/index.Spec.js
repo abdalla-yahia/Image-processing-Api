@@ -26,12 +26,12 @@ describe('Check the image info ', () => {
             const wd = 300;
             const hg = 200;
             const im = '1';
-            (0, sharp_1.default)(`dist/images/${im}.jpg`)[`${ex}`]()
+            (0, sharp_1.default)(`src/images/${im}.jpg`)[`${ex}`]()
                 .resize(Number(wd), Number(hg))
-                .toFile(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`);
-            return `dist/images/newfold/${im}-${wd}-${hg}.${ex}`;
+                .toFile(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
+            return `src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`;
         };
-        expect(TS()).toEqual('dist/images/newfold/1-300-200.jpeg');
+        expect(TS()).toEqual('src/images/OutputFolder/1-300-200.jpeg');
     });
     it('Check if the image exists after transform ', () => {
         const TS = () => {
@@ -39,19 +39,19 @@ describe('Check the image info ', () => {
             const wd = 300;
             const hg = 200;
             const im = '1';
-            fs_1.default.existsSync(`/images/newfold/${im}-${wd}-${hg}.${ex}`);
-            return `dist/images/newfold/${im}-${wd}-${hg}.${ex}`;
+            fs_1.default.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
+            return `src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`;
         };
-        expect(TS()).toEqual('dist/images/newfold/1-300-200.jpeg');
+        expect(TS()).toEqual('src/images/OutputFolder/1-300-200.jpeg');
     });
     it('Check if the image exists Befor transform ', () => {
         const TS = () => {
             const ex = 'jpg';
             const im = '1';
-            fs_1.default.existsSync(`/images/newfold/${im}.${ex}`);
-            return `dist/images/newfold/${im}.${ex}`;
+            fs_1.default.existsSync(`src/images/OutputFolder/${im}.${ex}`);
+            return `src/images/OutputFolder/${im}.${ex}`;
         };
-        expect(TS()).toEqual('dist/images/newfold/1.jpg');
+        expect(TS()).toEqual('src/images/OutputFolder/1.jpg');
     });
 });
 describe('Check All endpoints ', function () {
@@ -66,7 +66,7 @@ describe('Check All endpoints ', function () {
             let wd = req.query.width;
             let hg = req.query.height;
             let im = req.query.imageName;
-            if (fs_1.default.existsSync(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`))
+            if (fs_1.default.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`))
                 expect(response.status).toBe(200);
         });
     }));

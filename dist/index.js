@@ -16,11 +16,11 @@ app.listen(port, () => {
     console.log(`Server Listenning at port ${port} ...`);
 });
 // Creat A middleware
-app.use(express_1.default.static('dist'));
+app.use(express_1.default.static('./'));
 app.use(express_1.default.urlencoded({ extended: true }));
 // add routing for root path
 exports.Root = app.get('/', (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, '/dist/index.html'));
+    res.sendFile(path_1.default.join(__dirname, 'index.html'));
 });
 // Using the  middlewares
 app.use(showImage_1.default);

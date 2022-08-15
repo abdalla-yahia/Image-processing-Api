@@ -9,12 +9,11 @@ const router_creat : Router = Router()
 
 router_creat.use('/api', (req: Request, res: Response, nxt) => {
   //Check if output folder not exists
-  if (fs.existsSync('images/newfold') === false) {
-    //Creat output folder 
-    fs.mkdir('dist/images/newfold', (err) => {
-      err ? console.log('Folder Not Created!!!', err) : '';
+  if (fs.existsSync('src/images/OutputFolder') === false) {
+    //Creat output folder
+    fs.mkdir('src/images/OutputFolder', (err) => {
+      err ? console.log('Folder Not Created!!!', err) : ''
     })
-    
   }
   nxt()
 })
@@ -27,12 +26,14 @@ router_creat.all('/api', (req: Request, res: Response, nxt) => {
   let hg = req.query.height as string
   let im = req.query.imageName as string
     //Check if the image choosen is  not exsits 
-  if (fs.existsSync(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`) === false) {
-    //Creat the image after transform it 
-    sharp(`dist/images/${im}.jpg`)
+  if (
+    fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`) === false
+  ) {
+    //Creat the image after transform it
+    sharp(`src/images/${im}.jpg`)
       [`${ex}`]()
       .resize(Number(wd), Number(hg))
-      .toFile(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`)
+      .toFile(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`)
   } 
   nxt()
 })
@@ -43,11 +44,13 @@ router_creat.all('/api', async (req: Request, res: Response, nxt) => {
   let hg = req.query.height as string
   let im = req.query.imageName as string
 
-  if (fs.existsSync(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`) === false) {
-   await sharp(`dist/images/${im}.jpg`)
+  if (
+    fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`) === false
+  ) {
+    await sharp(`src/images/${im}.jpg`)
       [`${ex}`]()
       .resize(Number(wd), Number(hg))
-      .toFile(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`)
+      .toFile(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`)
   }
   nxt()
 })

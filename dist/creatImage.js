@@ -43,9 +43,9 @@ const app_1 = __importDefault(require("./app"));
 const router_creat = (0, express_1.Router)();
 router_creat.use('/api', (req, res, nxt) => {
     //Check if output folder not exists
-    if (fs.existsSync('images/newfold') === false) {
-        //Creat output folder 
-        fs.mkdir('dist/images/newfold', (err) => {
+    if (fs.existsSync('src/images/OutputFolder') === false) {
+        //Creat output folder
+        fs.mkdir('src/images/OutputFolder', (err) => {
             err ? console.log('Folder Not Created!!!', err) : '';
         });
     }
@@ -58,11 +58,11 @@ router_creat.all('/api', (req, res, nxt) => {
     let hg = req.query.height;
     let im = req.query.imageName;
     //Check if the image choosen is  not exsits 
-    if (fs.existsSync(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`) === false) {
-        //Creat the image after transform it 
-        (0, sharp_1.default)(`dist/images/${im}.jpg`)[`${ex}`]()
+    if (fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`) === false) {
+        //Creat the image after transform it
+        (0, sharp_1.default)(`src/images/${im}.jpg`)[`${ex}`]()
             .resize(Number(wd), Number(hg))
-            .toFile(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`);
+            .toFile(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
     }
     nxt();
 });
@@ -71,10 +71,10 @@ router_creat.all('/api', (req, res, nxt) => __awaiter(void 0, void 0, void 0, fu
     let wd = req.query.width;
     let hg = req.query.height;
     let im = req.query.imageName;
-    if (fs.existsSync(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`) === false) {
-        yield (0, sharp_1.default)(`dist/images/${im}.jpg`)[`${ex}`]()
+    if (fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`) === false) {
+        yield (0, sharp_1.default)(`src/images/${im}.jpg`)[`${ex}`]()
             .resize(Number(wd), Number(hg))
-            .toFile(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`);
+            .toFile(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
     }
     nxt();
 }));
