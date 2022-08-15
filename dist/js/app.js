@@ -45,8 +45,8 @@ router_app.use('/api', (req, res, nxt) => __awaiter(void 0, void 0, void 0, func
     let hg = req.query.height;
     let im = req.query.imageName;
     //check if image exists in output folder
-    if (fs.existsSync(`dist/images/newfold/${im}-${wd}-${hg}.${ex}`)) {
-        let pth = path_1.default.join(__dirname, `/images/newfold/${im}-${wd}-${hg}.${ex}`);
+    if (fs.existsSync(`images/newfold/${im}-${wd}-${hg}.${ex}`)) {
+        let pth = path_1.default.join(__dirname, `../images/newfold/${im}-${wd}-${hg}.${ex}`);
         //Return  the image to show it 
         yield res.status(200).sendFile(pth);
     }

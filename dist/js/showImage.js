@@ -22,7 +22,7 @@ router_show.use('/api', (req, res) => __awaiter(void 0, void 0, void 0, function
     let wd = req.query.width;
     let hg = req.query.height;
     let im = req.query.imageName;
-    let pth = path_1.default.join(__dirname, `/images/newfold/${im}-${wd}-${hg}.${ex}`);
+    let pth = path_1.default.join(__dirname, `../images/newfold/${im}-${wd}-${hg}.${ex}`);
     yield res.status(200).sendFile(pth);
 }));
 exports.default = router_show;

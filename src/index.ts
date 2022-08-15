@@ -16,12 +16,12 @@ app.listen(port, () => {
 })
 
 // Creat A middleware
-app.use(express.static('dist/public'))
+app.use(express.static('dist'))
 app.use(express.urlencoded({ extended: true }))
 
 // add routing for root path
 export let Root: object = app.get('/', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join(__dirname, '/dist/index.html'))
 })
 
 // Using the  middlewares

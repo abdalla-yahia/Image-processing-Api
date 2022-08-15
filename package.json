@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon dist/index.js",
+    "start": "nodemon dist/js/index.js",
     "build": "npx tsc",
-    "start:": "npm run build && node dist/index.js",
+    "start:": "npm run build && node dist/js/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "jasmine": "jasmine",
