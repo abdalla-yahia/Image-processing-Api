@@ -18,11 +18,11 @@ const creatImage_1 = __importDefault(require("./creatImage"));
 const router_show = (0, express_1.Router)();
 router_show.use(creatImage_1.default);
 router_show.use('/api', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let ex = req.query.ex;
-    let wd = req.query.width;
-    let hg = req.query.height;
-    let im = req.query.imageName;
-    let pth = path_1.default.join(__dirname, `../src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
-    yield res.status(200).sendFile(pth);
+    const ex = req.query.ex;
+    const wd = req.query.width;
+    const hg = req.query.height;
+    const im = req.query.imageName;
+    const pth = path_1.default.join(__dirname, `../src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
+    yield res.sendFile(pth);
 }));
 exports.default = router_show;

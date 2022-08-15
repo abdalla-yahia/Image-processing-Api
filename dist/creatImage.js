@@ -38,43 +38,73 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const sharp_1 = __importDefault(require("sharp"));
 const fs = __importStar(require("fs"));
-const app_1 = __importDefault(require("./app"));
 //Creat router
 const router_creat = (0, express_1.Router)();
-router_creat.use('/api', (req, res, nxt) => {
-    //Check if output folder not exists
-    if (fs.existsSync('src/images/OutputFolder') === false) {
-        //Creat output folder
-        fs.mkdir('src/images/OutputFolder', (err) => {
-            err ? console.log('Folder Not Created!!!', err) : '';
-        });
-    }
-    nxt();
-});
-router_creat.use(app_1.default);
-router_creat.all('/api', (req, res, nxt) => {
-    let ex = req.query.ex;
-    let wd = req.query.width;
-    let hg = req.query.height;
-    let im = req.query.imageName;
-    //Check if the image choosen is  not exsits 
-    if (fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`) === false) {
-        //Creat the image after transform it
-        (0, sharp_1.default)(`src/images/${im}.jpg`)[`${ex}`]()
-            .resize(Number(wd), Number(hg))
-            .toFile(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
-    }
-    nxt();
-});
+const arr_Names = ['1', '2', '3', '4', '5'];
+const arr_Extension = ['jpeg', 'jpg', 'png', 'gif'];
 router_creat.all('/api', (req, res, nxt) => __awaiter(void 0, void 0, void 0, function* () {
-    let ex = req.query.ex;
-    let wd = req.query.width;
-    let hg = req.query.height;
-    let im = req.query.imageName;
+    const ex = req.query.ex;
+    const wd = req.query.width;
+    const hg = req.query.height;
+    const im = req.query.imageName;
+    //Check if the image choosen is  not exsits
     if (fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`) === false) {
-        yield (0, sharp_1.default)(`src/images/${im}.jpg`)[`${ex}`]()
-            .resize(Number(wd), Number(hg))
-            .toFile(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
+        if (!im) {
+            return res
+                .status(400)
+                .send('<h1>Oh no... the <span style="color:red">Name</span> of the picture is missing...! </h1>');
+        }
+        else if (!arr_Names.includes(im)) {
+            return res
+                .status(400)
+                .send('<h1>Impossible... <span style="color:red">Picture Name</span> not found...!</h1>');
+        }
+        else if (!ex) {
+            return res
+                .status(400)
+                .send('<h1>Oops....the image <span style="color:red">Extension</span> is missing !!</h1>');
+        }
+        else if (!arr_Extension.includes(ex)) {
+            return res
+                .status(400)
+                .send('<h1>Impossible... <span style="color:red">Picture Extension </span> not found...!</h1>');
+        }
+        else if (!wd) {
+            return res
+                .status(400)
+                .send('<h1>how are you ?? The image <span style="color:red">Width</span> is missing...</h1> ');
+        }
+        else if (wd === '0') {
+            return res
+                .status(400)
+                .send('<h1>Impossible... The <span style="color:red"> Type of Width</span> you entered for the image is <span style="color:orange">ZERO</span>...</h1>');
+        }
+        else if (wd.match(/\D/g)) {
+            return res
+                .status(400)
+                .send('<h1>Impossible... The <span style="color:red"> Type of Width</span> you entered for the image is unknown...</h1>');
+        }
+        else if (!hg) {
+            return res
+                .status(400)
+                .send('<h1>No way... the <span style="color:red">Height</span> of the image is missing...</h1>');
+        }
+        else if (hg === '0') {
+            return res
+                .status(400)
+                .send('<h1>Impossible... The <span style="color:red"> Type of Height</span> you entered for the image is <span style="color:orange">ZERO</span>...</h1>');
+        }
+        else if (hg.match(/\D/g)) {
+            return res
+                .status(400)
+                .send('<h1>Impossible... The <span style="color:red"> Type of Height</span> you entered for the image is unknown...</h1>');
+        }
+        else {
+            yield (0, sharp_1.default)(`src/images/${im}.jpg`)
+                .jpeg()
+                .resize(Number(wd), Number(hg))
+                .toFile(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
+        }
     }
     nxt();
 }));

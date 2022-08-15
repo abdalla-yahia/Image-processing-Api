@@ -2,6 +2,10 @@ import express, { Application, Request, Response } from 'express'
 import path from 'path'
 import router_creat from './creatImage'
 import router_show from './showImage'
+import router_Cr_Ot_Folder from './CreatOutFold'
+import router_app from './app'
+import { Router } from 'express';
+
 
 // Create an app Application
 type app = Application
@@ -11,25 +15,27 @@ const app: app = express()
 const port: string | number = process.env.PORT || 5000
 
 // Create a listening server
-app.listen(port, () => {
+app.listen(port, () :void => {
   console.log(`Server Listenning at port ${port} ...`)
 })
 
 // Creat A middleware
-app.use(express.static('./'))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.static('./')) as object
+app.use(express.urlencoded({ extended: true })) as object
 
 // add routing for root path
-export let Root: object = app.get('/', (req: Request, res: Response) => {
+export const Root: object = app.get('/', (req: Request, res: Response) :void => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 
-// Using the  middlewares
-app.use(router_show)
-app.use(router_creat)
+// Using the Custom middlewares
+app.use(router_Cr_Ot_Folder) as Router
+app.use(router_app) as Router
+app.use(router_show) as Router
+app.use(router_creat) as Router
 
 //the /api endpoint
-app.get('/api', (req, res) => {
+app.get('/api', (req :Request, res:Response) :void=> {
   res.status(200).send('Image Not Found')
 })
 

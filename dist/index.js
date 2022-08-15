@@ -8,6 +8,8 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const creatImage_1 = __importDefault(require("./creatImage"));
 const showImage_1 = __importDefault(require("./showImage"));
+const CreatOutFold_1 = __importDefault(require("./CreatOutFold"));
+const app_1 = __importDefault(require("./app"));
 const app = (0, express_1.default)();
 //Define the port to default 5000 or clint chooses
 const port = process.env.PORT || 5000;
@@ -22,7 +24,9 @@ app.use(express_1.default.urlencoded({ extended: true }));
 exports.Root = app.get('/', (req, res) => {
     res.sendFile(path_1.default.join(__dirname, 'index.html'));
 });
-// Using the  middlewares
+// Using the Custom middlewares
+app.use(CreatOutFold_1.default);
+app.use(app_1.default);
 app.use(showImage_1.default);
 app.use(creatImage_1.default);
 //the /api endpoint

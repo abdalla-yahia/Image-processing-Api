@@ -40,13 +40,13 @@ const path_1 = __importDefault(require("path"));
 const fs = __importStar(require("fs"));
 const router_app = (0, express_1.Router)();
 router_app.use('/api', (req, res, nxt) => __awaiter(void 0, void 0, void 0, function* () {
-    let ex = req.query.ex;
-    let wd = req.query.width;
-    let hg = req.query.height;
-    let im = req.query.imageName;
+    const ex = req.query.ex;
+    const wd = req.query.width;
+    const hg = req.query.height;
+    const im = req.query.imageName;
     //check if image exists in output folder
     if (fs.existsSync(`src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`)) {
-        let pth = path_1.default.join(__dirname, `../src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
+        const pth = path_1.default.join(__dirname, `../src/images/OutputFolder/${im}-${wd}-${hg}.${ex}`);
         //Return  the image to show it
         yield res.status(200).sendFile(pth);
     }

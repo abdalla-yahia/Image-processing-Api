@@ -1,5 +1,5 @@
 import { Application } from 'express';
 declare type app = Application;
 declare const app: app;
-export declare let Root: object;
+export declare const Root: object;
 export default app;
